@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style type="text/css">
+        div{
+            width: 500px;
+            height: 350px;
+        }
+        .container{
+            border: 1px  solid lime;
+            padding: 20px;
+        }
+        .btn_sub{
+            align-items: right;
+        }
+    </style>
+    <title>Se7ebot</title>
+</head>
+<body>
+    <div class="container">
+        <h1 align="center" class="req">Requisição de Peças</h1>
+        <form action="" method="post">
+            <label for="pecas">
+                Peça: <input type="text" id="peca1" name="1_part">
+                Quantidade: <input type="number" id="qtd1" name="Quantidade"><br>
+                Peça: <input type="text" id="peca2" name="2_part">
+                Quantidade: <input type="number" id="qtd2" name="Quantidade"><br>
+                Peça: <input type="text" id="peca3" name="3_part">
+                Quantidade: <input type="number" id="qtd3" name="Quantidade"><br>
+                Peça: <input type="text" id="peca4" name="4_part">
+                Quantidade: <input type="number" id="qtd4" name="Quantidade"><br>
+                Peça: <input type="text" id="peca5" name="5_part">
+                Quantidade: <input type="number" id="qtd5" name="Quantidade"><br>
+                Peça: <input type="text" id="peca6" name="6_part">
+                Quantidade: <input type="number" id="qtd6" name="Quantidade"><br>
+                Peça: <input type="text" id="peca7" name="7_part">
+                Quantidade: <input type="number" id="qtd7" name="Quantidade"><br>
+                Peça: <input type="text" id="peca8" name="8_part">
+                Quantidade: <input type="number" id="qtd8" name="Quantidade"><br>
+                Peça: <input type="text" id="peca9" name="9_part">
+                Quantidade: <input type="number" id="qtd9" name="Quantidade"><br>
+                Peça: <input type="text" id="peca10" name="10_part">
+                Quantidade: <input type="number" id="qtd10" name="Quantidade"><br>
+            </label>
+            <p> <button type="submit" id="btn_sub">Enviar Pedido</button> </p>
+            <span id="value"></span>
+        </form>
+    </div>
+    <script>
+        vardatepicker = $('#datepicker').datepicker({
+            uiLibrary:'bootstrap4'
+        });
+    
+        //Carrega webview extensions
+        var webView = newBlipChatExtension()
+    
+        $('#button').click(function () {
+            
+            vardate = datepicker.value();
+            console.log(date);
+            $('#value').text(date);
+    
+            //envia mensagem de texto simples. (Usuário consegue visualizar a mensagem na janela de conversa)
+            webView.sendMessage(date);
+    
+            //finalizar webview
+            webView.closeWebView();
+        })
+    </script>
+</body>
+<footer>
+
+</footer>
+</html>
