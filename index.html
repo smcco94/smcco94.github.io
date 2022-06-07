@@ -1,71 +1,52 @@
-<!doctype html>
-<html>
-
+<!DOCTYPE html>
 <head>
-    <meta charset="utf-8">
-    <style type="text/css">
-        div{
-            width: 500px;
-            height: 350px;
-        }
-        .container{
-            padding: 20px;
-        }
-        .btn_sub{
-            align-items: right;
-        }
-    </style>
-    <title>Se7ebot</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/js/gijgo.min.js" type="text/javascript"></script>
+  <script src="https://unpkg.com/blip-chat-extension@1.0.4" type="text/javascript"></script>
+  <title>Se7ebot</title>
 </head>
 <body>
-    <div class="container">
-        <h1 align="center" class="req">Requisição de Peças</h1>
-                Peça: <input type="text" name="part1">
-                Quantidade: <input type="number" name="qtd1"><br>
-                Peça: <input type="text" name="part2">
-                Quantidade: <input type="number" name="qtd2"><br>
-                Peça: <input type="text" name="part3">
-                Quantidade: <input type="number" name="qtd3"><br>
-                Peça: <input type="text" name="part4">
-                Quantidade: <input type="number" name="qtd4"><br>
-                Peça: <input type="text" name="part5">
-                Quantidade: <input type="number" name="qtd5"><br>
-                Peça: <input type="text" name="part6">
-                Quantidade: <input type="number" name="qtd6"><br>
-                Peça: <input type="text" name="part7">
-                Quantidade: <input type="number" name="qtd7"><br>
-                Peça: <input type="text" name="part8">
-                Quantidade: <input type="number" name="qtd8"><br>
-                Peça: <input type="text" name="part9">
-                Quantidade: <input type="number" name="qtd9"><br>
-                Peça: <input type="text" name="part10">
-                Quantidade: <input type="number" name="qtd10"><br>
-            <input type="submit" value="Submit">
-            <span id="value"></span>
+    <div id="container" style="padding: 20px">
+      <h1>Requisição Orçamento</h1>
+      <p>Preencha os campos necesários e depois clique em 'Enviar'</p>
+  
+      <div role="wrapper" class="gj-datepicker gj-datepicker-bootstrap gj-unselectable input-group" style="width: 300px;"><input id="datepicker" width="300" data-type="datepicker" data-guid="9e7d4d1a-06d6-a9ea-d067-8063308d2aaf" data-datepicker="true" class="form-control" role="input"><span class="input-group-append" role="right-icon"><button class="btn btn-outline-secondary border-left-0" type="button"><i class="gj-icon">event</i></button></span></div>
+      <button id="button">Enviar</button>
+      <span id="value"></span>
     </div>
-    <script src="https://unpkg.com/blip-chat-extension@1.0.4" type="text/javascript">
-        vardatepicker = $('#datepicker').datepicker({
-            uiLibrary:'bootstrap4'
-        });
-    
-        //Carrega webview extensions
-        var webView = newBlipChatExtension()
-    
-        $('#button').click(function () {
-            
-            vardate = datepicker.value();
-            console.log(date);
-            $('#value').text(date);
-    
-            //envia mensagem de texto simples. (Usuário consegue visualizar a mensagem na janela de conversa)
-            webView.sendMessage(date);
-    
-            //finalizar webview
-            webView.closeWebView();
-        })
-    </script>
-</body>
-<footer>
-
-</footer>
-</html>
+  
+    <script>
+      var datepicker = $('#datepicker').datepicker({
+        uiLibrary: 'bootstrap4'
+      });
+  
+      //Carrega webview extensions
+      var webView = new BlipChatExtension()
+  
+      //Método que define as regras para fechamento da webview
+      webView.overrideOnClose(function () {
+  
+        if (datepicker.value() != '') {
+          //Permite fechar a webiview
+          return true;
+        }
+  
+        alert('Escolha uma data antes de fechar a Webview');
+        //Impede o fechamento da webiview
+        return false;
+      })
+  
+      $('#button').click(function () {
+        var date = datepicker.value();
+        console.log(date);
+        $('#value').text(date);
+        webView.sendMessage(date);
+  
+        //finalizar webview
+        webView.closeWebView();
+      })
+    </script><div role="calendar" type="month" class="gj-picker gj-picker-bootstrap datepicker gj-unselectable" guid="9e7d4d1a-06d6-a9ea-d067-8063308d2aaf" month="0" year="324" style="top: 157px; left: 20px; display: none;" selectedday="324-0-4"><div role="body"><div role="navigator"><div><i class="gj-icon chevron-left"></i></div><div role="period">January 324</div><div><i class="gj-icon chevron-right"></i></div></div><table><thead><tr role="week-days"><th><div>S</div></th><th><div>M</div></th><th><div>T</div></th><th><div>W</div></th><th><div>T</div></th><th><div>F</div></th><th><div>S</div></th></tr></thead><tbody><tr><td class="other-month gj-cursor-pointer" day="30" month="11" year="323"><div>30</div></td><td class="other-month gj-cursor-pointer" day="31" month="11" year="323"><div>31</div></td><td day="1" month="0" year="324" class="current-month gj-cursor-pointer"><div>1</div></td><td day="2" month="0" year="324" class="current-month gj-cursor-pointer"><div>2</div></td><td day="3" month="0" year="324" class="current-month gj-cursor-pointer"><div>3</div></td><td day="4" month="0" year="324" class="current-month gj-cursor-pointer selected"><div>4</div></td><td day="5" month="0" year="324" class="current-month gj-cursor-pointer"><div>5</div></td></tr><tr><td day="6" month="0" year="324" class="current-month gj-cursor-pointer"><div>6</div></td><td day="7" month="0" year="324" class="current-month gj-cursor-pointer"><div>7</div></td><td day="8" month="0" year="324" class="current-month gj-cursor-pointer"><div>8</div></td><td day="9" month="0" year="324" class="current-month gj-cursor-pointer"><div>9</div></td><td day="10" month="0" year="324" class="current-month gj-cursor-pointer"><div>10</div></td><td day="11" month="0" year="324" class="current-month gj-cursor-pointer"><div>11</div></td><td day="12" month="0" year="324" class="current-month gj-cursor-pointer"><div>12</div></td></tr><tr><td day="13" month="0" year="324" class="current-month gj-cursor-pointer"><div>13</div></td><td day="14" month="0" year="324" class="current-month gj-cursor-pointer"><div>14</div></td><td day="15" month="0" year="324" class="current-month gj-cursor-pointer"><div>15</div></td><td day="16" month="0" year="324" class="current-month gj-cursor-pointer"><div>16</div></td><td day="17" month="0" year="324" class="current-month gj-cursor-pointer"><div>17</div></td><td day="18" month="0" year="324" class="current-month gj-cursor-pointer"><div>18</div></td><td day="19" month="0" year="324" class="current-month gj-cursor-pointer"><div>19</div></td></tr><tr><td day="20" month="0" year="324" class="current-month gj-cursor-pointer"><div>20</div></td><td day="21" month="0" year="324" class="current-month gj-cursor-pointer"><div>21</div></td><td day="22" month="0" year="324" class="current-month gj-cursor-pointer"><div>22</div></td><td day="23" month="0" year="324" class="current-month gj-cursor-pointer"><div>23</div></td><td day="24" month="0" year="324" class="current-month gj-cursor-pointer"><div>24</div></td><td day="25" month="0" year="324" class="current-month gj-cursor-pointer"><div>25</div></td><td day="26" month="0" year="324" class="current-month gj-cursor-pointer"><div>26</div></td></tr><tr><td day="27" month="0" year="324" class="current-month gj-cursor-pointer"><div>27</div></td><td day="28" month="0" year="324" class="current-month gj-cursor-pointer"><div>28</div></td><td day="29" month="0" year="324" class="current-month gj-cursor-pointer"><div>29</div></td><td day="30" month="0" year="324" class="current-month gj-cursor-pointer"><div>30</div></td><td day="31" month="0" year="324" class="current-month gj-cursor-pointer"><div>31</div></td><td class="other-month gj-cursor-pointer" day="1" month="1" year="324"><div>1</div></td><td class="other-month gj-cursor-pointer" day="2" month="1" year="324"><div>2</div></td></tr></tbody></table></div></div>
+  
+  
+  </body>
