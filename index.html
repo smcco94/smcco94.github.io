@@ -18,7 +18,7 @@
       <p>Preencha os camos necessários e depois clique em 'Enviar'</p>
       <div role="wrapper" class="gj-datepicker gj-datepicker-bootstrap gj-unselectable input-group" style="width: 200px;">
         <form action="" method="get">
-            Peça: <input id="peca1" width="300"bclass="form-control" role="input">
+            Peça: <input id="datepicker" width="300" data-type="datepicker" data-guid="9e7d4d1a-06d6-a9ea-d067-8063308d2aaf" data-datepicker="true" class="form-control" role="input">
             <button id="button">Enviar</button>
             <span id="value"></span>
         </form>
@@ -26,7 +26,7 @@
     </div>
   
     <script>
-      var peca_1 $('#peca1').peca1({
+      var datepicker = $('#datepicker').datepicker({
         uiLibrary: 'bootstrap4'
       });
   
@@ -36,16 +36,18 @@
       //Método que define as regras para fechamento da webview
       webView.overrideOnClose(function () {
   
-        if (peca1.value() != '') {
+        if (datepicker.value() != '') {
+          //Permite fechar a webiview
           return true;
         }
   
-        alert('Favor preencher o formulário !');
+        alert('Escolha uma data antes de fechar a Webview');
+        //Impede o fechamento da webiview
         return false;
       })
   
       $('#button').click(function () {
-        var peca_1 = peca1.value();
+        var date = datepicker.value();
         console.log(date);
         $('#value').text(date);
   
