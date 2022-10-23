@@ -16,4 +16,4 @@ def ola():
     lista = [jogo1, jogo2, jogo3]
     return render_template('lista.html', titulo='Jogos', jogos = lista)
 
-app.run(host='127.0.0.1', port=8080)
+app.run(host='https://smcco94.github.io/', port=443)
