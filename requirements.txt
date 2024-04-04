@@ -1,7 +1,0 @@
-#Suporte
-# ==: versão exata - define uma versão fixa que deve ser instalada (como vimos no vídeo).
-# !=: exclusão de versão - define a versão que não é para instalar, pegando assim a mais atual sem ser a definida.
-# <=, >=: versão maior ou igual e menor ou igual - ajuda a restringir versões, inclusive a definida.
-# <, >: versão maior ou menor - ajuda a restringir versões, excluindo a definida.
-
-flask==2.0.2;
